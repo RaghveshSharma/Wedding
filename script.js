@@ -40,6 +40,7 @@ function openInvitation() {
         coverPage.style.display = 'none';
         mainContent.classList.add('active');
         createPetals();
+        createConfetti();
     }, 800);
 }
 
@@ -67,6 +68,44 @@ function createPetals() {
     // Create initial batch
     for (let i = 0; i < 5; i++) {
         setTimeout(createPetal, i * 300);
+    }
+}
+
+// Confetti Burst Effect
+function createConfetti() {
+    const colors = ['#ff6b9d', '#ff85a3', '#ffd700', '#ff1744', '#c41e3a'];
+    const confettiCount = 50;
+    
+    for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'fixed';
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.top = '-10px';
+        confetti.style.opacity = '1';
+        confetti.style.pointerEvents = 'none';
+        confetti.style.zIndex = '10000';
+        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+        
+        document.body.appendChild(confetti);
+        
+        const fallDuration = Math.random() * 3 + 2;
+        const fallDistance = Math.random() * 100 + 100;
+        const rotation = Math.random() * 360;
+        
+        confetti.animate([
+            { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+            { transform: `translateY(${fallDistance}vh) rotate(${rotation}deg)`, opacity: 0 }
+        ], {
+            duration: fallDuration * 1000,
+            easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+        });
+        
+        setTimeout(() => {
+            confetti.remove();
+        }, fallDuration * 1000);
     }
 }
 
@@ -212,73 +251,6 @@ document.addEventListener('click', () => {
     }
 });
 
-// Add confetti burst on specific actions
-function createConfetti() {
-    const colors = ['#ff6b9d', '#ff85a3', '#ffd700', '#ff1744', '#c41e3a'];
-    const confettiCount = 50;
-    
-    for (let i = 0; i < confettiCount; i++) {
-        const confetti = document.createElement('div');
-        confetti.style.position = 'fixed';
-        confetti.style.width = '10px';
-        confetti.style.height = '10px';
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.left = Math.random() * 100 + '%';
-        confetti.style.top = '-10px';
-        confetti.style.opacity = '1';
-        confetti.style.pointerEvents = 'none';
-        confetti.style.zIndex = '10000';
-        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-        
-        document.body.appendChild(confetti);
-        
-        const fallDuration = Math.random() * 3 + 2;
-        const fallDistance = Math.random() * 100 + 100;
-        const rotation = Math.random() * 360;
-        
-        confetti.animate([
-            { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
-            { transform: `translateY(${fallDistance}vh) rotate(${rotation}deg)`, opacity: 0 }
-        ], {
-            duration: fallDuration * 1000,
-            easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-        });
-        
-        setTimeout(() => {
-            confetti.remove();
-        }, fallDuration * 1000);
-    }
-}
-
-// Trigger confetti when opening invitation
-const originalOpenInvitation = openInvitation;
-openInvitation = function() {
-    createConfetti();
-    originalOpenInvitation();
-};
-
-// Add shake animation on countdown when time is running low
-function checkCountdownUrgency() {
-    const days = parseInt(document.getElementById('days').textContent);
-    const countdownCard = document.querySelector('.countdown-card');
-    
-    if (days <= 7 && countdownCard) {
-        countdownCard.style.animation = 'shake 0.5s ease-in-out infinite';
-    }
-}
-
-const shakeStyle = document.createElement('style');
-shakeStyle.textContent = `
-    @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-5px); }
-        75% { transform: translateX(5px); }
-    }
-`;
-document.head.appendChild(shakeStyle);
-
-setInterval(checkCountdownUrgency, 60000); // Check every minute
-
 // Add swipe gesture for mobile (optional enhancement)
 let touchStartX = 0;
 let touchEndX = 0;
@@ -295,11 +267,11 @@ document.addEventListener('touchend', e => {
 function handleSwipe() {
     const swipeThreshold = 50;
     if (touchEndX < touchStartX - swipeThreshold) {
-        // Swipe left - could add navigation if needed
+        // Swipe left
         console.log('Swiped left');
     }
     if (touchEndX > touchStartX + swipeThreshold) {
-        // Swipe right - could add navigation if needed
+        // Swipe right
         console.log('Swiped right');
     }
 }
@@ -338,13 +310,53 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// Vibrate on button clicks (mobile only)
+if ('vibrate' in navigator) {
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            navigator.vibrate(50);
+        });
+    });
+}
+
+// Prevent zoom on double tap (mobile)
+let lastTouchEnd = 0;
+document.addEventListener('touchend', (e) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+        e.preventDefault();
+    }
+    lastTouchEnd = now;
+}, false);
+
+// Add shake animation on countdown when time is running low
+function checkCountdownUrgency() {
+    const days = parseInt(document.getElementById('days').textContent);
+    const countdownCard = document.querySelector('.countdown-card');
+    
+    if (days <= 7 && countdownCard) {
+        countdownCard.style.animation = 'shake 0.5s ease-in-out infinite';
+    }
+}
+
+const shakeStyle = document.createElement('style');
+shakeStyle.textContent = `
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+    }
+`;
+document.head.appendChild(shakeStyle);
+
+setInterval(checkCountdownUrgency, 60000); // Check every minute
+
 // Console message
 console.log('%c💕 Kratika & Sushim Wedding Invitation 💕', 'color: #ff6b9d; font-size: 20px; font-weight: bold; font-family: "Dancing Script", cursive;');
 console.log('%cMade with love ❤️ | February 11-14, 2026', 'color: #8b1538; font-size: 14px;');
 console.log('%cJalwa Resort, Narmadapuram & Indore', 'color: #c41e3a; font-size: 12px;');
 
-// Prevent right-click on images (optional - to protect photos)
-// Uncomment if needed
-// document.querySelectorAll('img').forEach(img => {
-//     img.addEventListener('contextmenu', e => e.preventDefault());
-// });
+// Auto-scroll to top on page load
+window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+});
