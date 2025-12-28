@@ -73,9 +73,10 @@ html {
     position: relative;
 }
 
-/* Cover Page */
+/* Cover Page - FIT ON ONE SCREEN */
 .cover-page {
     min-height: 100vh;
+    max-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -83,6 +84,7 @@ html {
     position: relative;
     overflow: hidden;
     transition: all 0.8s ease;
+    padding: 20px;
 }
 
 .cover-page::before {
@@ -99,26 +101,26 @@ html {
 
 .cover-content {
     text-align: center;
-    padding: 40px 30px;
+    padding: 20px;
     position: relative;
     z-index: 10;
     animation: fadeInUp 1.5s ease;
 }
 
 .ganesh-icon {
-    font-size: 60px;
-    margin-bottom: 20px;
+    font-size: 50px;
+    margin-bottom: 15px;
     animation: pulse 2s ease-in-out infinite;
 }
 
 .cover-title {
     color: white;
-    font-size: 28px;
-    margin-bottom: 30px;
+    font-size: 24px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 12px;
 }
 
 .hindi-text {
@@ -127,56 +129,56 @@ html {
 }
 
 .flourish {
-    font-size: 24px;
+    font-size: 20px;
     animation: rotate 4s ease-in-out infinite;
 }
 
 .wedding-rings {
-    font-size: 80px;
-    margin: 30px 0;
+    font-size: 60px;
+    margin: 20px 0;
     animation: bounce 2s ease-in-out infinite;
 }
 
 .couple-names {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
-    margin: 30px 0;
+    margin: 20px 0;
 }
 
 .bride-name,
 .groom-name {
     font-family: 'Dancing Script', cursive;
-    font-size: 42px;
+    font-size: 38px;
     color: white;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .heart-divider {
-    font-size: 32px;
+    font-size: 28px;
     animation: heartbeat 1.5s ease-in-out infinite;
 }
 
 .tagline {
-    font-size: 24px;
+    font-size: 20px;
     color: rgba(255, 255, 255, 0.95);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-style: italic;
 }
 
 .invitation-date {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
-    padding: 15px 30px;
+    padding: 12px 25px;
     border-radius: 50px;
-    margin: 30px auto;
+    margin: 20px auto;
     display: inline-block;
 }
 
 .date-text {
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
 }
 
@@ -184,9 +186,9 @@ html {
     background: white;
     color: var(--burgundy);
     border: none;
-    padding: 18px 45px;
+    padding: 14px 40px;
     border-radius: 50px;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 600;
     cursor: pointer;
     display: inline-flex;
@@ -194,7 +196,7 @@ html {
     gap: 10px;
     transition: all 0.3s ease;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-    margin-top: 20px;
+    margin-top: 15px;
     font-family: 'Cormorant Garamond', serif;
 }
 
@@ -209,13 +211,6 @@ html {
 
 .open-invitation:hover .arrow {
     transform: translateX(5px);
-}
-
-.decorative-border {
-    width: 200px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, white, transparent);
-    margin: 30px auto 0;
 }
 
 /* Main Content */
@@ -279,11 +274,11 @@ html {
     font-style: italic;
 }
 
-/* Countdown Card */
+/* Countdown Card - FIXED OVERFLOW */
 .countdown-card {
     background: linear-gradient(135deg, #8b1538 0%, #c41e3a 100%);
     border-radius: 25px;
-    padding: 35px 20px;
+    padding: 30px 15px;
     margin-bottom: 30px;
     box-shadow: 0 15px 50px rgba(139, 21, 56, 0.4);
 }
@@ -291,13 +286,14 @@ html {
 .countdown-title {
     text-align: center;
     color: white;
-    font-size: 24px;
-    margin-bottom: 25px;
+    font-size: 20px;
+    margin-bottom: 20px;
     font-family: 'Playfair Display', serif;
+    line-height: 1.4;
 }
 
 .sparkle {
-    font-size: 20px;
+    font-size: 18px;
     animation: twinkle 2s ease-in-out infinite;
 }
 
@@ -305,38 +301,43 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
+    padding: 0 5px;
 }
 
 .time-unit {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 15px 8px;
-    min-width: 65px;
+    border-radius: 12px;
+    padding: 12px 6px;
+    min-width: 60px;
+    max-width: 70px;
     text-align: center;
     border: 2px solid rgba(255, 255, 255, 0.2);
+    flex: 1;
 }
 
 .time-value {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: bold;
     color: white;
     font-family: 'Playfair Display', serif;
+    line-height: 1;
 }
 
 .time-label {
-    font-size: 11px;
+    font-size: 10px;
     color: rgba(255, 255, 255, 0.9);
-    margin-top: 5px;
+    margin-top: 4px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
 .time-separator {
     color: white;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
+    padding: 0 2px;
 }
 
 /* Events Timeline */
@@ -357,6 +358,7 @@ html {
     font-size: 24px;
 }
 
+/* UNIFORM EVENT CARDS - ALL SAME SIZE & COLOR */
 .event-item {
     background: white;
     border-radius: 20px;
@@ -367,7 +369,7 @@ html {
     gap: 20px;
     align-items: flex-start;
     transition: all 0.4s ease;
-    border: 2px solid transparent;
+    border: 2px solid #f0f0f0;
 }
 
 .event-item:hover {
@@ -376,30 +378,33 @@ html {
     border-color: var(--primary-pink);
 }
 
+/* All event cards same style - only Sangeet & Wedding highlighted */
 .event-item.highlight {
-    background: linear-gradient(135deg, #fff5f7 0%, #ffe8f0 100%);
-    border: 2px solid var(--primary-pink);
+    background: linear-gradient(135deg, #fef5f7 0%, #fff0f3 100%);
+    border: 2px solid var(--burgundy);
 }
 
 .event-item.main-event {
-    background: linear-gradient(135deg, #fff8f0 0%, #ffe8e8 100%);
+    background: linear-gradient(135deg, #fffbf0 0%, #fff8e8 100%);
     border: 3px solid var(--gold);
 }
 
 .event-item.reception {
-    background: linear-gradient(135deg, #ffe8f0 0%, #fff0f5 100%);
-    border: 2px solid #ff1744;
+    background: linear-gradient(135deg, #fff0f5 0%, #ffe8f0 100%);
+    border: 2px solid var(--primary-pink);
 }
 
+/* ALL DATE BADGES SAME BURGUNDY COLOR */
 .event-date-badge {
-    background: linear-gradient(135deg, var(--primary-pink) 0%, var(--secondary-pink) 100%);
+    background: linear-gradient(135deg, #8b1538 0%, #a91d3a 100%);
     border-radius: 15px;
-    padding: 12px 15px;
+    padding: 15px;
     text-align: center;
-    min-width: 70px;
+    min-width: 80px;
+    max-width: 80px;
     color: white;
     flex-shrink: 0;
-    box-shadow: 0 5px 20px rgba(255, 107, 157, 0.3);
+    box-shadow: 0 5px 20px rgba(139, 21, 56, 0.3);
 }
 
 .event-date-badge.special {
@@ -407,12 +412,12 @@ html {
 }
 
 .event-date-badge.main {
-    background: linear-gradient(135deg, var(--gold) 0%, #ffd700 100%);
-    color: var(--dark);
+    background: linear-gradient(135deg, #8b1538 0%, #a91d3a 100%);
+    color: white;
 }
 
 .event-date-badge.valentine {
-    background: linear-gradient(135deg, #ff1744 0%, #ff4569 100%);
+    background: linear-gradient(135deg, #8b1538 0%, #c41e3a 100%);
 }
 
 .badge-day {
@@ -435,12 +440,13 @@ html {
 
 .main-badge,
 .valentine-badge {
-    background: rgba(255, 255, 255, 0.3);
-    padding: 4px 8px;
-    border-radius: 10px;
-    font-size: 10px;
-    margin-top: 5px;
+    background: rgba(255, 255, 255, 0.25);
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 9px;
+    margin-top: 6px;
     font-weight: bold;
+    letter-spacing: 0.5px;
 }
 
 .event-details {
@@ -846,5 +852,51 @@ html {
     .main-content {
         border-radius: 30px;
         box-shadow: 0 20px 80px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Mobile Optimization */
+@media (max-width: 480px) {
+    .cover-page {
+        padding: 15px;
+    }
+
+    .ganesh-icon {
+        font-size: 45px;
+        margin-bottom: 12px;
+    }
+
+    .cover-title {
+        font-size: 22px;
+        gap: 10px;
+    }
+
+    .wedding-rings {
+        font-size: 55px;
+        margin: 15px 0;
+    }
+
+    .bride-name,
+    .groom-name {
+        font-size: 36px;
+    }
+
+    .tagline {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    .invitation-date {
+        padding: 10px 20px;
+    }
+
+    .date-text {
+        font-size: 16px;
+    }
+
+    .open-invitation {
+        padding: 12px 35px;
+        font-size: 16px;
+        margin-top: 12px;
     }
 }
