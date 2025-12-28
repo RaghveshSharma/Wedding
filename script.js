@@ -46,7 +46,7 @@ function openInvitation() {
 
 // Create Falling Petals/Hearts
 function createPetal() {
-    const petals = ['🌸', '🌺', '🌹', '❤️', '💕', '💖', '💗', '🌷', '🏵️', '💐'];
+    const petals = ['🌸', '🌺', '🌹', '❤️', '💕', '💖', '💗', '🌷', '🏵️', '💍'];
     const petal = document.createElement('div');
     petal.className = 'petal';
     petal.textContent = petals[Math.floor(Math.random() * petals.length)];
@@ -201,18 +201,6 @@ function createRipple(event) {
     }, 600);
 }
 
-// Add ripple animation CSS dynamically
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes ripple {
-        to {
-            transform: scale(4);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(style);
-
 // Add click handlers for ripple effect
 const buttons = document.querySelectorAll('.open-invitation, .directions-btn');
 buttons.forEach(button => {
@@ -338,16 +326,6 @@ function checkCountdownUrgency() {
         countdownCard.style.animation = 'shake 0.5s ease-in-out infinite';
     }
 }
-
-const shakeStyle = document.createElement('style');
-shakeStyle.textContent = `
-    @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-5px); }
-        75% { transform: translateX(5px); }
-    }
-`;
-document.head.appendChild(shakeStyle);
 
 setInterval(checkCountdownUrgency, 60000); // Check every minute
 
