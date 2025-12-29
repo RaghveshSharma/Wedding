@@ -367,7 +367,7 @@ html {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
     display: flex;
     gap: 15px;
-    align-items: flex-start;
+    align-items: center;
     transition: all 0.4s ease;
     border: 2px solid #f0f0f0;
 }
@@ -398,10 +398,22 @@ html {
 }
 
 /* Reception highlighted in valentine pink */
+/* Reception default (pink if NOT main event) */
 .event-item.reception {
     background: linear-gradient(135deg, #fff0f5 0%, #ffe8f0 100%);
     border: 2px solid #ff6b9d;
 }
+
+/* Reception when it is also a main event → GOLD */
+.event-item.reception.main-event {
+    background: linear-gradient(135deg, #fffbf0 0%, #fff8e8 100%);
+    border: 2px solid #d4af37;
+}
+
+.event-item.reception.main-event:hover {
+    border-color: #b8941f;
+}
+
 
 .event-item.reception:hover {
     border-color: #c41e3a;
@@ -932,4 +944,34 @@ html {
         font-size: 16px;
         margin-top: 12px;
     }
+}
+.event-item.main-event {
+    box-shadow: 0 0 0 rgba(212,175,55,0.0);
+}
+
+.event-item.main-event:hover {
+    box-shadow: 0 0 30px rgba(212,175,55,0.5);
+    transform: translateY(-6px) scale(1.02);
+}
+/* Soft pink glow for highlighted events */
+.event-item.highlight {
+    box-shadow: 0 0 0 rgba(255,107,157,0.0);
+}
+
+.event-item.highlight:hover {
+    box-shadow: 0 0 25px rgba(255,107,157,0.45);
+    transform: translateY(-5px) scale(1.01);
+}
+
+.site-credit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;              /* pushes it into middle of white area */
+    margin-top: 30px;
+    font-size: 16px;          /* slightly bigger */
+    color: #8b5f5f;           /* richer readable tone */
+    letter-spacing: 1.2px;
+    font-style: italic;
+    opacity: 0.85;
 }
