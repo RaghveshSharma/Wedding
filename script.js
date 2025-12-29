@@ -1,5 +1,5 @@
 // Wedding Date - First event (Haldi on Feb 11, 2026)
-const weddingDate = new Date('2026-02-11T13:00:00').getTime();
+const weddingDate = new Date('2026-02-12T18:00:00').getTime();
 
 // Countdown Timer
 function updateCountdown() {
